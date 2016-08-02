@@ -26,8 +26,8 @@ end
 
 # Activate s3 sync
 activate :s3_sync do |s3_sync|
-  s3_sync.bucket                     = 'developer.mercaux.com' # The name of the S3 bucket you are targeting. This is globally unique.
-  s3_sync.region                     = 'eu-central-1'     # The AWS region for your bucket.
+  s3_sync.bucket                     = ENV['BUCKET'] # The name of the S3 bucket you are targeting. This is globally unique.
+  s3_sync.region                     = ENV['REGION']     # The AWS region for your bucket.
   s3_sync.aws_access_key_id          = ENV['AWS_ACCESS_KEY']
   s3_sync.aws_secret_access_key      = ENV['AWS_ACCESS_SECRET']
   #s3_sync.delete                     = false # We delete stray files by default.
