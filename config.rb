@@ -20,6 +20,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 set :fonts_dir, 'fonts'
 
+activate :sprockets
 # Activate the syntax highlighter
 activate :syntax
 
