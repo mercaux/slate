@@ -24,6 +24,29 @@ We support any of the data export formats (JSON, XML, CSV, XLS) via shared folde
 
 # Product feed
 
+```XML
+
+<offers>
+      <offer id="example_sku">
+        <url>http://example-store.com/path/to/the/product</url>
+        <price>12.00</price>
+        <oldprice>15.50</oldprice>
+        <currencyId>EUR</currencyId>
+        <categoryId>547</categoryId>
+        <picture>http://example-store.com/path/to/image/1.jpg</picture>
+        <picture>http://example-store.com/path/to/image/2.jpg</picture>
+        <vendor>Vendor name</vendor>
+        <model>model_code</model>
+        <param name="Color">Green</param>
+        <param name="Size" unit="INT">L</param>
+        <param name="Fabric">100% Cotton</param>
+        <param name="Gender">Female</param>
+      </offer>
+      ...
+</offers>
+
+```
+
 See below the list of required and optional parameters in feed:
 
 Parameter | Required | Comment
@@ -35,6 +58,8 @@ colors | yes | Array of colors, at least one required
 sizes | yes | Array of sizes with barcodes
 short_description | no | Can be used as a subtitle
 description | no |
+model | no | Model code
+gender | no |
 brand | no |
 season | no |
 collection | no |
