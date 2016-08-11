@@ -58,131 +58,161 @@ curl "api_endpoint_here"
 ```
 
 > Make sure to replace `XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX` with your API key.
+
 > Make sure to replace `pagingData` with data from previous response.
 
-Mercaux API has paging enabled. You may get 206 (Partial Content) code back with only partial content and "X-MercauxPagingData" header set.
+Mercaux API has paging enabled. You may get 206 (Partial Content) code back with only part of content in response and "X-MercauxPagingData" header set.
 
 That means you need to make another request with same URL, providing this header back as is to get next data portion.
 
-# Kittens
+# API Key Requests
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Reset API Key
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "https://api.mercaux.com/apikey/reset"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "data": "XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint returns new API Key. The old one will stop working in a minute.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://api.mercaux.com/apikey/reset`
+
+# Data Requests
+
+## Get Looks
+
+
+```shell
+curl "https://api.mercaux.com/api/look/"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+# OR
+curl "https://api.mercaux.com/api/look/?query=some_text_query"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id" : "1",
+      "likesCount" : "2",
+      "name" : "Look 1",
+      "imageName" : "/look/image/pic.jpg",
+      "products" : [
+        {
+          "sku" : "PRODUCT123",
+          "uniqueId" : "123456"
+        },
+        {
+          "sku" : "PRODUCT1234"
+        }
+      ],
+      "badges" : [
+        {
+          "name" : "Super Badge",
+          "filename" : "/badge/image/pic.jpg"
+        }
+      ],
+      "tags" : [
+        {
+          "tag" : "super",
+          "text" : "Super Tag"
+        }
+      ],
+      "createdBy" : [
+         {
+           "languageCode" : "en",
+           "text" : "Alex"
+         },
+         {
+           "languageCode : "ru",
+           "text" : "Алексей"
+         }
+      ],
+      "createdOn" : "2016-06-07.07:54:58",
+      "updatedOn" : "2016-06-07.07:54:58",
+      "status" : "active",
+      "digital" : false,
+      "lookType" : "signature",
+      "previewImageName" : "/look/preview/pic.jpg",
+      "secondaryPreviewImageNames" : [
+        {
+          "filename" : "/look/preview/pic2.jpg",
+          "weight" = 400
+        },
+        {
+          "filename" : "/look/preview/pic3.jpg",
+          "weight" = 399
+        }
+      ]
+    },
+    {
+      "id" : "2",
+      "likesCount" : "3",
+      "name" : "Look 2",
+      "imageName" : "/look/image/pic33.jpg",
+      "products" : [
+        {
+          "sku" : "PRODUCT2123",
+          "uniqueId" : "2123456"
+        },
+        {
+          "sku" : "PRODUCT21234"
+        }
+      ],
+      "createdBy" : [
+         {
+           "languageCode" : "en",
+           "text" : "Alex"
+         },
+         {
+           "languageCode : "ru",
+           "text" : "Алексей"
+         }
+      ],
+      "createdOn" : "2016-06-07.07:54:58",
+      "updatedOn" : "2016-06-07.07:54:58",
+      "status" : "awaiting_approval",
+      "digital" : true,
+      "lookType" : "ordinary",
+      "previewImageName" : "/look/preview/pic4.jpg",
+      "secondaryPreviewImageNames" : [
+        {
+          "filename" : "/look/preview/pic22.jpg",
+          "weight" = 400
+        },
+        {
+          "filename" : "/look/preview/pic33.jpg",
+          "weight" = 399
+        }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves all looks (if query is empty) or looks satisfying the query (if not empty).
+
+### HTTP Request
+
+`GET https://api.mercaux.com/api/look/?query=<query>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+query | Text query to filter looks (optional)
 
