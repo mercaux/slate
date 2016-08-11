@@ -103,6 +103,8 @@ color | yes | One color or array of colors, at least one required
 size | yes | One size or array of sizes
 barcode | yes | One barcode or array of barcodes associated with sizes
 price | yes | We support different prices for differens countries
+ecom_url | yes/no | Required in case of integration for omni
+images | yes/no | Required if additional images feed/folder is not provided
 old_price | no | Price before discounts
 short_description | no | Can be used as a subtitle
 description | no |
@@ -114,6 +116,5 @@ collection | no |
 wave | no |
 supplier | no |
 fabric | no |
-ecom_url | no |
 additional_attributes | no | For example tags or additional categories
 
