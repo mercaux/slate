@@ -3,8 +3,8 @@ title: Mercaux integration
 
 language_tabs:
   - xml
-  - JSON
-  - CSV
+  - json
+  - csv
 
 search: false
 ---
@@ -28,8 +28,8 @@ Mercaux also supports flawless integration with common product feed standards su
 ```xml
 
 <offers>
-      <offer id="example_sku">
-        <url>http://example-store.com/path/to/the/product</url>
+      <offer id="example_sku" title="Jeans">
+        <ecomUrl>http://example-store.com/path/to/the/product</url>
         <price>12.00</price>
         <oldprice>15.50</oldprice>
         <currencyId>EUR</currencyId>
@@ -38,7 +38,7 @@ Mercaux also supports flawless integration with common product feed standards su
         <picture>http://example-store.com/path/to/image/2.jpg</picture>
         <vendor>Vendor name</vendor>
         <model>model_code</model>
-        <param name="Color">Green</param>
+        <param name="Color">Blue</param>
         <param name="Size" unit="INT">L</param>
         <param name="Fabric">100% Cotton</param>
         <param name="Gender">Female</param>
@@ -48,21 +48,57 @@ Mercaux also supports flawless integration with common product feed standards su
 
 ```
 
-See below the list of required and optional parameters in feed:
+```json
+
+{
+  "products" : [ {
+    "ean" : "barcode,
+    "category" : "category_code"
+    "price" : {
+    	"currency" : "EUR",
+    	"value" : "12.00",
+    	"old_value" : "15.50"
+    },
+    "ecom_url" : "http://example-store.com/path/to/the/product",
+    "sku" : "example_sku",
+    "title" : "Jeans",
+    "subtitle" : "Exmaple subtitle",
+    "sizes" : [ {
+    		"size" : "M",
+    		"barcode" : "example_barcode_1"
+    	},{
+    		"size" : "L",
+    		"barcode" : "example_barcode_2"
+    	}    	
+    ]
+    "images" : [
+    	"http://example-store.com/path/to/image/1.jpg",
+    	"http://example-store.com/path/to/image/2.jpg"
+    ],
+    "color" : "Blue",
+    "fabric" : "100% Cotton",
+    "description" : "Example description"
+  	}, ...
+  ]
+}
+
+```
+
+See below the list of required and optional parameters:
 
 Parameter | Required | Comment
 --------- | -------- | -------
 sku | yes |
 category_id | yes | ID from the catalogue tree or unique name
 name | yes | Main product title
-colors | yes | Array of colors, at least one required
-size | yes | One or array of sizes
-barcode | yes | One or array of barcodes associated with sizes
-price | yes |
+color | yes | One color or array of colors, at least one required
+size | yes | One size or array of sizes
+barcode | yes | One barcode or array of barcodes associated with sizes
+price | yes | We support different prices for differens countries
 old_price | no | Price before discounts
 short_description | no | Can be used as a subtitle
 description | no |
-model | no | Model code
+model | no | Model code, usually a part of SKU
 gender | no |
 brand | no |
 season | no |
@@ -71,5 +107,5 @@ wave | no |
 supplier | no |
 fabric | no |
 ecom_url | no |
-additional_attributes | no | For example tags
+additional_attributes | no | For example tags or additional categories
 
