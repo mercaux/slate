@@ -8,6 +8,11 @@ set :markdown,
     tables: true,
     with_toc_data: true,
     no_intra_emphasis: true
+# Multi site
+site_prefix = ENV["SITE"] || "source"
+unless site_prefix.nil?
+    set :source, "#{site_prefix}"
+end
 
 # Assets
 set :css_dir, 'stylesheets'
