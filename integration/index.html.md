@@ -2,7 +2,7 @@
 title: Mercaux integration
 
 language_tabs:
-  - XML
+  - xml
   - JSON
   - CSV
 
@@ -24,7 +24,7 @@ We support any of the data export formats (JSON, XML, CSV, XLS) via shared folde
 
 # Product feed
 
-```XML
+```xml
 
 <offers>
       <offer id="example_sku">
