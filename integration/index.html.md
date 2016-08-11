@@ -39,7 +39,7 @@ Mercaux also supports flawless integration with common product feed standards su
         <vendor>Vendor name</vendor>
         <model>model_code</model>
         <param name="Color">Blue</param>
-        <param name="Size" unit="INT">L</param>
+        <param name="Size">L</param>
         <param name="Fabric">100% Cotton</param>
         <param name="Gender">Female</param>
       </offer>
@@ -52,7 +52,7 @@ Mercaux also supports flawless integration with common product feed standards su
 
 {
   "products" : [ {
-    "category" : "category_code"
+    "category" : "category_code",
     "price" : {
     	"currency" : "EUR",
     	"value" : "12.00",
@@ -80,6 +80,14 @@ Mercaux also supports flawless integration with common product feed standards su
   	}, ...
   ]
 }
+
+```
+
+```csv
+
+sku,category_id,name,color,size,barcode,price
+"example_sku","category_id","Jeans","Blue","M","example_barcode_1","12.00"
+"example_sku","category_id","Jeans","Blue","L","example_barcode_2","12.00"
 
 ```
 
