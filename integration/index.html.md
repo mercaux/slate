@@ -52,7 +52,6 @@ Mercaux also supports flawless integration with common product feed standards su
 
 {
   "products" : [ {
-    "ean" : "barcode,
     "category" : "category_code"
     "price" : {
     	"currency" : "EUR",
@@ -65,10 +64,10 @@ Mercaux also supports flawless integration with common product feed standards su
     "subtitle" : "Exmaple subtitle",
     "sizes" : [ {
     		"size" : "M",
-    		"barcode" : "example_barcode_1"
+    		"ean" : "example_barcode_1"
     	},{
     		"size" : "L",
-    		"barcode" : "example_barcode_2"
+    		"ean" : "example_barcode_2"
     	}    	
     ]
     "images" : [
