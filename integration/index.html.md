@@ -1,5 +1,5 @@
 ---
-title: Integration Documentation
+title: Public API Reference
 
 language_tabs:
   - shell
@@ -48,7 +48,7 @@ You must replace <code>XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX</code> with your perso
 curl "api_endpoint_here"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 ```
-> To get all next portions of data, add `X-MercauxPagingData` header. Copy it intact from previous response. 
+> To get all next portions of data, add `X-MercauxPagingData` header. Copy it intact from previous response.
 
 ```shell
 # With shell, you can just pass the correct header with each request
@@ -185,4 +185,3 @@ This endpoint retrieves a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
-
