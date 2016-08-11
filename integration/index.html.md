@@ -2,7 +2,9 @@
 title: Mercaux integration
 
 language_tabs:
-  - XML, JSON, CSV
+  - XMLs 
+  - JSON
+  - CSV
 
 search: false
 ---
@@ -16,8 +18,9 @@ Mercaux uses four basic data sets:
 3. Product images (identified by product id in name or path to the image)
 4. Inventory (usually the list of tuples storeId + productId + quantity)
 
-We support any of the data export formats (json, XML, csv) via shared folder (for example regular export to SFTP folder) or our integration with your existing external API. 
-
+<aside class="notice">
+We support any of the data export formats (JSON, XML, CSV, XLS) via shared folder (for example regular export to SFTP folder) or integration with your existing API. 
+</aside>
 
 # Product feed
 
@@ -25,13 +28,20 @@ We support any of the data export formats (json, XML, csv) via shared folder (fo
 Parameter | Required | Comment
 --------- | -------- | -------
 sku | yes |
-category_id | yes |
-name / title | yes |
+category_id | yes | ID from the catalogue tree or unique name
+name | yes | Main product title
+colors | yes | Array of colors, at least one required
+sizes | yes | Array of sizes with barcodes
+short_description | no | Can be used as a subtitle
 description | no |
 brand | no |
 season | no |
 collection | no |
 wave | no |
+supplier | no |
 fabric | no |
-colors | yes | Array of colors, required at least one
-sizes | yes | Array of sizes with barcodes
+ecom_url | no |
+
+<aside class="success">
+Mercaux supports flawless integration with common product feed standards such as 
+</aside>
