@@ -68,6 +68,4 @@ supplier | no |
 fabric | no |
 ecom_url | no |
 
-<aside class="success">
 Mercaux supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML (Yandex Market Language)](https://yandex.ru/support/partnermarket/yml/about-yml.xml), [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf)
-</aside>
