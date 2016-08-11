@@ -21,6 +21,7 @@ Mercaux uses four basic data sets:
 <aside class="notice">
 We support any of the data export formats (JSON, XML, CSV, XLS) via shared folder (for example regular export to SFTP folder) or integration with your existing API. 
 </aside>
+Mercaux also supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML](https://yandex.ru/support/partnermarket/yml/about-yml.xml) or [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf).
 
 # Product feed
 
@@ -55,7 +56,10 @@ sku | yes |
 category_id | yes | ID from the catalogue tree or unique name
 name | yes | Main product title
 colors | yes | Array of colors, at least one required
-sizes | yes | Array of sizes with barcodes
+size | yes | One or array of sizes
+barcode | yes | One or array of barcodes associated with sizes
+price | yes |
+old_price | no | Price before discounts
 short_description | no | Can be used as a subtitle
 description | no |
 model | no | Model code
@@ -67,5 +71,5 @@ wave | no |
 supplier | no |
 fabric | no |
 ecom_url | no |
+additional_attributes | no | For example tags
 
-Mercaux supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML (Yandex Market Language)](https://yandex.ru/support/partnermarket/yml/about-yml.xml), [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf)
