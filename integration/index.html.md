@@ -1,5 +1,5 @@
 ---
-title: Public API Reference
+title: Integration Documentation
 
 language_tabs:
   - shell
