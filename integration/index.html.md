@@ -83,13 +83,14 @@ Mercaux also supports flawless integration with common product feed standards su
 
 ```
 
-```csv
+```YAML
 
 sku,category_id,name,color,size,barcode,price
 "example_sku","category_id","Jeans","Blue","M","example_barcode_1","12.00"
 "example_sku","category_id","Jeans","Blue","L","example_barcode_2","12.00"
 
 ```
+
 
 See below the list of required and optional parameters:
 
