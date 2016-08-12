@@ -2,9 +2,9 @@
 title: Mercaux integration
 
 language_tabs:
-  - xml
-  - json
-  - csv
+  - xml: XML
+  - json: JSON
+  - plaintext: CSV
 
 search: false
 ---
