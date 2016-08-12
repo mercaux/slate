@@ -5,7 +5,8 @@ language_tabs:
   - shell
 
 toc_footers:
-  - For a Developer ApiKey contact your Mercaux manager
+  - For a Developer ApiKey contact your 
+  Mercaux manager
   - <a href='https://github.com/tripit/slate'>Documentation Powered by  Slate</a>
 
 includes:
@@ -232,3 +233,83 @@ curl "https://api.mercaux.com/1.0/api/look/image/<imageName>"
 
 > The above command returns `303 See Other` result code and redirect location to Amazon CDN. 
 > The redirect link is valid at least 30 seconds after it was generated.
+
+This endpoint retrieves an layout image with given name.
+It always return `303 See Other` result code and redirect location to Amazon CDN in `Location` header.
+All popular network libraries are able to automatically follow this redirect and get the image (if exists).
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/look/image/<imageName>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+imageName | image name
+
+### Redirect URL
+
+This request will always provide you with URL redirect to. That's a signed Amazon CDN URL, which is valid for a short amount of time.
+Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
+even if link is already expired. To re-download the image later, use this API url to generate new redirect.
+
+## Get look preview image
+
+```shell
+curl "https://api.mercaux.com/1.0/api/look/preview/<imageName>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns `303 See Other` result code and redirect location to Amazon CDN. 
+> The redirect link is valid at least 30 seconds after it was generated.
+
+This endpoint retrieves an layout image with given name.
+It always return `303 See Other` result code and redirect location to Amazon CDN in `Location` header.
+All popular network libraries are able to automatically follow this redirect and get the image (if exists).
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/look/preview/<imageName>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+imageName | image name
+
+### Redirect URL
+
+This request will always provide you with URL redirect to. That's a signed Amazon CDN URL, which is valid for a short amount of time.
+Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
+even if link is already expired. To re-download the image later, use this API url to generate new redirect.
+
+## Get look badge image
+
+```shell
+curl "https://api.mercaux.com/1.0/api/badge/image/<imageName>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns `303 See Other` result code and redirect location to Amazon CDN. 
+> The redirect link is valid at least 30 seconds after it was generated.
+
+This endpoint retrieves an layout image with given name.
+It always return `303 See Other` result code and redirect location to Amazon CDN in `Location` header.
+All popular network libraries are able to automatically follow this redirect and get the image (if exists).
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/badge/image/<imageName>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+imageName | image name
+
+### Redirect URL
+
+This request will always provide you with URL redirect to. That's a signed Amazon CDN URL, which is valid for a short amount of time.
+Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
+even if link is already expired. To re-download the image later, use this API url to generate new redirect.
