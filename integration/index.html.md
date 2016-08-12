@@ -200,6 +200,41 @@ Image name/path should contain some kind of product id which helps linking image
 
 
 ##Stores list
+
+> Example of the stores list
+
+```xml
+
+<stores>
+	<store id="12" name="Baker Street" address="221B Baker Street, Marylebone, London, NW1 6XE, UK">
+	<store id="22" name="The Trampery" address="239 Old St, London, EC1V 9EY, UK">
+	...
+</stores>
+
+```
+
+```json
+
+{ "stores" : [ {
+		"id" : 12,
+		"name" : "Baker Street",
+		"address" : "221B Baker Street, Marylebone, London, NW1 6XE, UK"
+	}, {
+		"id" : 22,
+		"name" : "The Trampery",
+		"address" : "239 Old St, London, EC1V 9EY, UK"
+	}, ...
+] }
+
+```
+
+```plaintext
+id;name;address
+12;Baker Street;221B Baker Street, Marylebone, London, NW1 6XE, UK
+22;The Trampery;239 Old St, London, EC1V 9EY, UK
+
+```
+
 Parameter | Required | Comment
 --------- | -------- | -------
 store_id | yes | Any type of unique ID
