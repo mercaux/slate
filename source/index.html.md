@@ -66,6 +66,19 @@ Mercaux API has paging enabled. You may get 206 (Partial Content) code back with
 
 That means you need to make another request with same URL, providing this header back as is to get next data portion.
 
+# Throttling
+
+Mercaux API will reject your request if you access API too often. You will get `429 (Too Many Requests)` result code.
+Default throttling value is 3 requests per minute for one API key. There are two exceptions from this rule.
+
+### Request throttling and paging
+
+All consequent paging requests are treated as one request and so not throttled.
+
+### Request throttling and images
+
+After you request some looks, all corresponding images become available for download (only once) without throttling.
+
 # API Key Requests
 
 ## Reset API Key
