@@ -4,7 +4,7 @@ title: Mercaux integration
 language_tabs:
   - xml
   - json
-  - csv
+  - text
 
 search: false
 ---
@@ -24,6 +24,15 @@ We support any of the data export formats (JSON, XML, CSV, XLS) via shared folde
 Mercaux also supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML](https://yandex.ru/support/partnermarket/yml/about-yml.xml) or [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf).
 
 # Product feed
+
+
+```text
+
+sku,category_id,name,color,size,barcode,price
+"example_sku","category_id","Jeans","Blue","M","example_barcode_1","12.00"
+"example_sku","category_id","Jeans","Blue","L","example_barcode_2","12.00"
+
+```
 
 ```xml
 
@@ -69,7 +78,7 @@ Mercaux also supports flawless integration with common product feed standards su
     		"size" : "L",
     		"ean" : "example_barcode_2"
     	}    	
-    ]
+    ],
     "images" : [
     	"http://example-store.com/path/to/image/1.jpg",
     	"http://example-store.com/path/to/image/2.jpg"
@@ -80,14 +89,6 @@ Mercaux also supports flawless integration with common product feed standards su
   	}, ...
   ]
 }
-
-```
-
-```YAML
-
-sku,category_id,name,color,size,barcode,price
-"example_sku","category_id","Jeans","Blue","M","example_barcode_1","12.00"
-"example_sku","category_id","Jeans","Blue","L","example_barcode_2","12.00"
 
 ```
 
