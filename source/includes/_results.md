@@ -1,4 +1,4 @@
-# Resul codes
+# Result codes
 
 <aside class="notice"></aside>
 
