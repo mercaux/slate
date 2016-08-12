@@ -26,7 +26,7 @@ Mercaux also supports flawless integration with common product feed standards su
 
 # Catalogue tree
 
-> Example of the catalogue structure
+> Example of the catalogue structure:
 
 ```xml
 
@@ -75,11 +75,14 @@ Parameter | Required | Comment
 category_id | yes | Any kind of unique ID
 name | yes | Category name
 parent_id | yes/no | Required in case of plain structure
+category_image | no | Icon or category cover from ecom
+ecom_url | no |
+
 
 
 # Product feed
 
-> Example of the feed items
+> Example of the feed items:
 
 ```xml
 
@@ -108,7 +111,7 @@ parent_id | yes/no | Required in case of plain structure
 
 {
   "products" : [ {
-    "category" : "category_code",
+    "category" : "category_id",
     "price" : {
     	"currency" : "EUR",
     	"value" : "12.00",
@@ -176,4 +179,21 @@ wave | no |
 supplier | no |
 fabric | no |
 additional_attributes | no | For example tags or additional categories
+
+# Product images
+
+###There are several options to let Mercaux download images:
+* Directly from ecom or through public links
+* From shared folder (for example SFTP or SharePoint folder)
+* Via upload to Mercaux SFTP folder as an export process from internal storage systems
+
+<aside class="notice">
+Image name/path should contain some kind of product id which helps linking images to products and identifying primary ones.
+</aside>
+
+# Inventory
+
+Integrating with inventory levels requires two types of data sets:
+* Stores list
+* Inventory feed
 
