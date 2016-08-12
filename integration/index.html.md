@@ -21,7 +21,7 @@ Mercaux uses four basic data sets:
 <aside class="notice">
 We support any of the data export formats (JSON, XML, CSV, XLS) via shared folder (for example regular export to SFTP folder) or integration with your existing API. 
 </aside>
-Mercaux also supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML](https://yandex.ru/support/partnermarket/yml/about-yml.xml) or [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf).
+###Mercaux also supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML](https://yandex.ru/support/partnermarket/yml/about-yml.xml) or [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf).
 
 
 # Catalogue tree
@@ -193,7 +193,25 @@ Image name/path should contain some kind of product id which helps linking image
 
 # Inventory
 
-Integrating with inventory levels requires two types of data sets:
+###Integrating with inventory levels requires two types of data sets:
 * Stores list
 * Inventory feed
 
+###Stores list
+Parameter | Required | Comment
+--------- | -------- | -------
+store_id | yes | Any type of unique ID
+name | yes |
+address | yes |
+phone | no |
+latitude | no |
+longitude | no |
+store_cluster | no | Optional grouping by store type
+
+###Inventory feed
+Parameter | Required | Comment
+--------- | -------- | -------
+store_id | yes |
+product_id | yes | Full SKU, ID or pair of product SKU and size ID
+quantity | yes |
+stock_quantity | no | Mercaux supports sales floor / stock inventory separation
