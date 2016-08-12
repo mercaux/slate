@@ -210,6 +210,9 @@ latitude | no |
 longitude | no |
 store_cluster | no | Optional grouping by store type
 
+
+##Inventory feed
+
 > Example of the inventory feed:
 
 ```xml
@@ -255,8 +258,6 @@ exmaple_store_id,example_product_id_2,5
 
 ```
 
-
-##Inventory feed
 Parameter | Required | Comment
 --------- | -------- | -------
 store_id | yes |
