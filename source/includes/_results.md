@@ -1,7 +1,5 @@
 # Result codes
 
-<aside class="notice"></aside>
-
 The Mercaux API uses the following result codes:
 
 

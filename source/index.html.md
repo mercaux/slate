@@ -4,11 +4,6 @@ title: Public API Reference
 language_tabs:
   - shell
 
-toc_footers:
-  - For a Developer ApiKey contact your 
-  - Mercaux manager
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by  Slate</a>
-
 includes:
   - results
 
@@ -36,10 +31,6 @@ Mercaux uses API keys to allow access to the API. You will need to ask your Merc
 API expects the API key to be included in all API requests to the server in a header that looks like the following:
 
 `X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX`
-
-<aside class="notice">
-You must replace <code>XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX</code> with your personal API key.
-</aside>
 
 # Paging
 
