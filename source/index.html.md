@@ -333,6 +333,62 @@ This request will always provide you with URL redirect to. That's a signed Amazo
 Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
 even if link is already expired. To re-download the image later, use this API url to generate new redirect.
 
+## Get Alternatives
+
+```shell
+curl "https://api.mercaux.com/1.0/api/alternative/"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id" : "1", 
+      "sku" : "SR12345", 
+      "alternativeSku" : "SR43212",
+      "uniqueId" : "12345", 
+      "alternativeUniqueId" : "54321",
+      "criterion" : "manual"
+    },
+    {
+      "id" : "2", 
+      "sku" : "SR12346", 
+      "alternativeSku" : "SR43213",
+      "alternativeUniqueId" : "543211",
+      "criterion" : "manual"
+    },
+    {
+      "id" : "3", 
+      "sku" : "SR12347", 
+      "alternativeSku" : "SR43214",
+      "uniqueId" : "123425",
+      "criterion" : "manual"
+    },
+    {
+      "id" : "3", 
+      "sku" : "SR12347", 
+      "alternativeSku" : "SR43214"
+      "criterion" : "manual"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all alternatives.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/alternative/`
+
+### Criteria
+
+Alternative criterion is one of the  following types:
+
+* manual
+
 ## Get Recommendation
 
 ```shell
