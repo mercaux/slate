@@ -42,18 +42,20 @@ We support any of the data export formats (JSON, XML, CSV, XLS) via shared folde
 ```json
 
 { "categories" : [ {
-	"id" : "example_id_1",
-	"name" : "Female",
-	"subcategories" : [ {
-		"id" : "exmaple_id_2",
-		"name" : "Shoes",
-		"subcategories" : []
+		"id" : "example_id_1",
+		"name" : "Female",
+		"subcategories" : [ {
+			"id" : "exmaple_id_2",
+			"name" : "Shoes",
+			"subcategories" : []
 		}, ...
-	] 
+		] 
 	}, {
-	"id" : "example_id_3",
-	"name" : "Male",
-	"subcategories" : [...] 
+		"id" : "example_id_3",
+		"name" : "Male",
+		"subcategories" : [
+			...
+		] 
 	}, ...	
 ] }
 
@@ -165,7 +167,7 @@ color | yes | One color or array of colors, at least one required
 size | yes | One size or array of sizes
 barcode | yes | One barcode or array of barcodes associated with sizes
 price | yes | We support different prices for differens countries
-ecom_url | yes/no | Required in case of integration for omni
+ecom_url | yes/no | Required in case of integration for omni channel orders
 images | yes/no | Required if additional images feed/folder is not provided
 old_price | no | Price before discounts
 short_description | no | Can be used as a subtitle
