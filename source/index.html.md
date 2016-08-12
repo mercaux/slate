@@ -6,7 +6,7 @@ language_tabs:
 
 toc_footers:
   - For a Developer ApiKey contact your 
-  Mercaux manager
+  - Mercaux manager
   - <a href='https://github.com/tripit/slate'>Documentation Powered by  Slate</a>
 
 includes:
@@ -105,7 +105,6 @@ This endpoint returns new API Key. The old one will stop working in a minute.
 # Data Requests
 
 ## Get Looks
-
 
 ```shell
 curl "https://api.mercaux.com/1.0/api/look/"
@@ -237,6 +236,13 @@ To get these images you should use this API, e.g. if provided image path is `/1.
 you should access it with `https://api.mercaux.com/1.0/api/look/image/pic33.jpg` URL. 
 See below for these Image request details.
 
+### Text constants
+
+Some json fields have predefined values. Here's the list:
+
+* Status: active, awaiting_approval, rejected
+* Look type : ordinary, signature, operational, social, customer
+
 ## Get look layout image
 
 ```shell
@@ -326,3 +332,62 @@ imageName | image name
 This request will always provide you with URL redirect to. That's a signed Amazon CDN URL, which is valid for a short amount of time.
 Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
 even if link is already expired. To re-download the image later, use this API url to generate new redirect.
+
+## Get Recommendation
+
+```shell
+curl "https://api.mercaux.com/1.0/api/recommendation/"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id" : "1", 
+      "sku" : "SR12345", 
+      "recommendedSku" : "SR43212",
+      "uniqueId" : "12345", 
+      "recommendedUniqueId" : "54321",
+      "criterion" : "manual"
+    },
+    {
+      "id" : "2", 
+      "sku" : "SR12346", 
+      "recommendedSku" : "SR43213",
+      "recommendedUniqueId" : "543211",
+      "criterion" : "manual"
+    },
+    {
+      "id" : "3", 
+      "sku" : "SR12347", 
+      "recommendedSku" : "SR43214",
+      "uniqueId" : "123425",
+      "criterion" : "manual"
+    },
+    {
+      "id" : "3", 
+      "sku" : "SR12347", 
+      "recommendedSku" : "SR43214"
+      "criterion" : "manual"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all recommendations.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/recommendation/`
+
+### Criteria
+
+Recommendation criterion is one of the  following types:
+
+* manual
+* Look <LookName> (one criterion for each look)
+
+  
