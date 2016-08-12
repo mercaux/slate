@@ -138,7 +138,7 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
            "text" : "Alex"
          },
          {
-           "languageCode : "ru",
+           "languageCode" : "ru",
            "text" : "Алексей"
          }
       ],
@@ -179,7 +179,7 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
            "text" : "Alex"
          },
          {
-           "languageCode : "ru",
+           "languageCode" : "ru",
            "text" : "Алексей"
          }
       ],
