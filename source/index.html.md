@@ -70,7 +70,7 @@ That means you need to make another request with same URL, providing this header
 ## Reset API Key
 
 ```shell
-curl "https://api.mercaux.com/apikey/reset"
+curl "https://api.mercaux.com/1.0/apikey/reset"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 ```
 
@@ -86,7 +86,7 @@ This endpoint returns new API Key. The old one will stop working in a minute.
 
 ### HTTP Request
 
-`GET https://api.mercaux.com/apikey/reset`
+`GET https://api.mercaux.com/1.0/apikey/reset`
 
 # Data Requests
 
@@ -94,10 +94,10 @@ This endpoint returns new API Key. The old one will stop working in a minute.
 
 
 ```shell
-curl "https://api.mercaux.com/api/look/"
+curl "https://api.mercaux.com/1.0/api/look/"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 # OR
-curl "https://api.mercaux.com/api/look/?query=some_text_query"
+curl "https://api.mercaux.com/1.0/api/look/?query=some_text_query"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 ```
 
@@ -110,7 +110,7 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
       "id" : "1",
       "likesCount" : "2",
       "name" : "Look 1",
-      "imageName" : "/look/image/pic.jpg",
+      "imageName" : "/1.0/api/look/image/pic.jpg",
       "products" : [
         {
           "sku" : "PRODUCT123",
@@ -123,7 +123,7 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
       "badges" : [
         {
           "name" : "Super Badge",
-          "filename" : "/badge/image/pic.jpg"
+          "filename" : "/1.0/api/badge/image/pic.jpg"
         }
       ],
       "tags" : [
@@ -147,15 +147,15 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
       "status" : "active",
       "digital" : false,
       "lookType" : "signature",
-      "previewImageName" : "/look/preview/pic.jpg",
+      "previewImageName" : "/1.0/api/look/preview/pic.jpg",
       "secondaryPreviewImageNames" : [
         {
-          "filename" : "/look/preview/pic2.jpg",
-          "weight" = 400
+          "filename" : "/1.0/api/look/preview/pic2.jpg",
+          "weight" : 400
         },
         {
-          "filename" : "/look/preview/pic3.jpg",
-          "weight" = 399
+          "filename" : "/1.0/api/look/preview/pic3.jpg",
+          "weight" : 399
         }
       ]
     },
@@ -163,7 +163,7 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
       "id" : "2",
       "likesCount" : "3",
       "name" : "Look 2",
-      "imageName" : "/look/image/pic33.jpg",
+      "imageName" : "/1.0/api/look/image/pic33.jpg",
       "products" : [
         {
           "sku" : "PRODUCT2123",
@@ -188,15 +188,15 @@ curl "https://api.mercaux.com/api/look/?query=some_text_query"
       "status" : "awaiting_approval",
       "digital" : true,
       "lookType" : "ordinary",
-      "previewImageName" : "/look/preview/pic4.jpg",
+      "previewImageName" : "/1.0/api/look/preview/pic4.jpg",
       "secondaryPreviewImageNames" : [
         {
-          "filename" : "/look/preview/pic22.jpg",
-          "weight" = 400
+          "filename" : "/1.0/api/look/preview/pic22.jpg",
+          "weight" : 400
         },
         {
-          "filename" : "/look/preview/pic33.jpg",
-          "weight" = 399
+          "filename" : "/1.0/api/look/preview/pic33.jpg",
+          "weight" : 399
         }
       ]
     }
@@ -208,7 +208,7 @@ This endpoint retrieves all looks (if query is empty) or looks satisfying the qu
 
 ### HTTP Request
 
-`GET https://api.mercaux.com/api/look/?query=<query>`
+`GET https://api.mercaux.com/1.0/api/look/?query=<query>`
 
 ### URL Parameters
 
@@ -216,3 +216,19 @@ Parameter | Description
 --------- | -----------
 query | Text query to filter looks (optional)
 
+### Images
+
+Every look contains layout image and may contain preview images (primary and several secondary ones).
+To get these images you should use this API, e.g. if provided image path is `/1.0/api/look/image/pic33.jpg` 
+you should access it with `https://api.mercaux.com/1.0/api/look/image/pic33.jpg` URL. 
+See below for these Image request details.
+
+## Get look layout image
+
+```shell
+curl "https://api.mercaux.com/1.0/api/look/image/<imageName>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns `303 See Other` result code and redirect location to Amazon CDN. 
+> The redirect link is valid at least 30 seconds after it was generated.
