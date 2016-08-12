@@ -370,7 +370,7 @@ curl "https://api.mercaux.com/1.0/api/alternative/"
     {
       "id" : "3", 
       "sku" : "SR12347", 
-      "alternativeSku" : "SR43214"
+      "alternativeSku" : "SR43214",
       "criterion" : "manual"
     }
   ]
@@ -426,7 +426,7 @@ curl "https://api.mercaux.com/1.0/api/recommendation/"
     {
       "id" : "3", 
       "sku" : "SR12347", 
-      "recommendedSku" : "SR43214"
+      "recommendedSku" : "SR43214",
       "criterion" : "manual"
     }
   ]
