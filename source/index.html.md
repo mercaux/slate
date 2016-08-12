@@ -390,4 +390,46 @@ Recommendation criterion is one of the  following types:
 * manual
 * Look <LookName> (one criterion for each look)
 
-  
+# Miscellaneous requests
+
+## Get current time
+
+```shell
+curl "https://api.mercaux.com/1.0/misc/time"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": "2016-08-12.10:47:52"
+}
+```
+
+This endpoint retrieves current time.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/misc/time`
+
+## Get current API version
+
+```shell
+curl "https://api.mercaux.com/1.0/misc/version"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": "1.0.11"
+}
+```
+
+This endpoint retrieves current version.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/misc/version`
