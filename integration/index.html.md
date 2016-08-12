@@ -11,7 +11,7 @@ search: false
 
 # Summary
 
-Mercaux uses four basic data sets:
+###Mercaux uses four basic data sets:
 
 1. Catalogue structure (categories tree)
 2. List of products with descriptions (name, description, attributes, prices etc.) and their categories
