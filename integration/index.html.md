@@ -9,7 +9,7 @@ language_tabs:
 search: false
 ---
 
-# Integration intro
+# Summary
 
 Mercaux uses four basic data sets:
 
