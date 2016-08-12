@@ -197,7 +197,9 @@ Image name/path should contain some kind of product id which helps linking image
 * Stores list
 * Inventory feed
 
-###Stores list
+
+
+##Stores list
 Parameter | Required | Comment
 --------- | -------- | -------
 store_id | yes | Any type of unique ID
@@ -208,7 +210,53 @@ latitude | no |
 longitude | no |
 store_cluster | no | Optional grouping by store type
 
-###Inventory feed
+> Example of the inventory feed:
+
+```xml
+
+<inventory>
+	<store id="example_store_id">
+		<record productId="example_id_1">
+			7
+		</record>
+		<record productId="example_id_2">
+			3
+		</record>
+		...
+	</store>
+	...
+</inventory>
+
+```
+
+```json
+
+{ "inventory" : [ {
+		"product_id" : "example_id_1",
+		"store_id" : "example_store_id",
+		"quantity" : 4,
+		"stock_quantity" : 2
+	}, {
+		"product_id" : "example_id_2",
+		"store_id" : "example_store_id",
+		"quantity" : 3,
+		"stock_quantity" : 1
+	}, ...
+] }
+
+```
+
+```plaintext
+
+store_id,product_id,quantity
+exmaple_store_id,example_product_id_1,6
+exmaple_store_id,example_product_id_2,5
+...
+
+```
+
+
+##Inventory feed
 Parameter | Required | Comment
 --------- | -------- | -------
 store_id | yes |
