@@ -190,7 +190,7 @@ additional_attributes | no | For example tags or additional categories
 * Via upload to Mercaux SFTP folder as an export process from internal storage systems
 
 <aside class="notice">
-Image name/path should contain some kind of product id which helps linking images to products and identifying primary ones.
+Image name/path should contain some kind of product id and logic helping to identify the primary one.
 </aside>
 
 # Inventory
