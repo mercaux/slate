@@ -9,7 +9,7 @@ language_tabs:
 search: false
 ---
 
-# Introduction
+# Integration intro
 
 Mercaux uses four basic data sets:
 
@@ -23,7 +23,63 @@ We support any of the data export formats (JSON, XML, CSV, XLS) via shared folde
 </aside>
 Mercaux also supports flawless integration with common product feed standards such as [Google product feed](https://support.google.com/merchants/answer/188494?hl=en), [YML](https://yandex.ru/support/partnermarket/yml/about-yml.xml) or [Amazon product feed](https://images-na.ssl-images-amazon.com/images/G/01/rainier/help/XML_Documentation_Intl.pdf).
 
+
+# Catalogue tree
+
+> Example of the catalogue structure
+
+```xml
+
+<categories>
+	<category id="157">Female</category>
+	<category id="158">Male</category>
+	<category id="170" parentId="157">Shoes</category>
+	...
+</categories>
+
+```
+
+```json
+
+{ "categories" : [ {
+	"id" : "example_id_1",
+	"name" : "Female",
+	"subcategories" : [ {
+		"id" : "exmaple_id_2",
+		"name" : "Shoes",
+		"subcategories" : []
+		}, ...
+	] 
+	}, {
+	"id" : "example_id_3",
+	"name" : "Male",
+	"subcategories" : [...] 
+	}, ...	
+] }
+
+```
+
+```plaintext
+
+id,name,parent_id
+157,Female,
+158,Male,
+170,Shoes,157
+
+```
+
+### See below the list of required and optional parameters:
+
+Parameter | Required | Comment
+--------- | -------- | -------
+category_id | yes | Any kind of unique ID
+name | yes | Category name
+parent_id | yes/no | Required in case of plain structure
+
+
 # Product feed
+
+> Example of the feed items
 
 ```xml
 
@@ -92,8 +148,10 @@ sku,category_id,name,color,size,barcode,price
 
 ```
 
+> Product variants (sizes) can be stored as separate products (with parent sku field for example) or inside the product.
+ 
 
-See below the list of required and optional parameters:
+### See below the list of required and optional parameters:
 
 Parameter | Required | Comment
 --------- | -------- | -------
