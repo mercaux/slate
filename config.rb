@@ -52,6 +52,7 @@ end
 # Github pages require relative links
 activate :relative_assets
 set :relative_links, true
+activate :asset_hash
 
 # Build Configuration
 configure :build do
