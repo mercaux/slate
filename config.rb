@@ -52,8 +52,8 @@ end
 # Github pages require relative links
 #activate :relative_assets
 #set :relative_links, true
-activate :asset_hash
-activate :asset_host, :host => 'http://developer.mercaux.com'
+#activate :asset_hash
+#activate :asset_host, :host => 'http://developer.mercaux.com'
 
 # Build Configuration
 configure :build do
