@@ -50,10 +50,10 @@ activate :s3_sync do |s3_sync|
 end
 
 # Github pages require relative links
-#activate :relative_assets
+activate :relative_assets
 #set :relative_links, true
-#activate :asset_hash
-#activate :asset_host, :host => 'http://developer.mercaux.com'
+activate :asset_hash
+activate :asset_host, :host => 'http://developer.mercaux.com'
 
 # Build Configuration
 configure :build do
@@ -61,8 +61,8 @@ configure :build do
   # out the following two lines has been known to help
   #activate :minify_css
   #activate :minify_javascript
-  activate :relative_assets
-  activate :asset_hash
+  #activate :relative_assets
+  #activate :asset_hash
   # activate :gzip
 end
 
