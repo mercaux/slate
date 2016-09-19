@@ -54,7 +54,7 @@ caching_policy 'text/html', max_age: 0, must_revalidate: true
 default_caching_policy max_age:(31536000)
 
 # Github pages require relative links
-activate :relative_assets
+#activate :relative_assets
 #set :relative_links, true
 activate :asset_hash
 #activate :asset_host, :host => 'http://developer.mercaux.com'
