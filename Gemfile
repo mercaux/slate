@@ -9,3 +9,4 @@ gem "middleman-sprockets", "~> 4.0.0"
 gem 'rouge', '~> 1.10.1'
 gem 'redcarpet', '~> 3.3.2'
 gem 'middleman-s3_sync'
+gem 'mime-types'
