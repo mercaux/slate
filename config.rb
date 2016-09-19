@@ -49,18 +49,22 @@ activate :s3_sync do |s3_sync|
   #s3_sync.error_document             = '404.html'
 end
 
+#s3 caching policy
+caching_policy 'text/html', max_age: 0, must_revalidate: true
+default_caching_policy max_age:(31536000)
+
 # Github pages require relative links
 activate :relative_assets
 #set :relative_links, true
 activate :asset_hash
-activate :asset_host, :host => 'http://developer.mercaux.com'
+#activate :asset_host, :host => 'http://developer.mercaux.com'
 
 # Build Configuration
 configure :build do
   # If you're having trouble with Middleman hanging, commenting
   # out the following two lines has been known to help
-  #activate :minify_css
-  #activate :minify_javascript
+  activate :minify_css
+  activate :minify_javascript
   #activate :relative_assets
   #activate :asset_hash
   # activate :gzip
