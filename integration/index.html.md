@@ -168,7 +168,6 @@ size | yes | One size or array of sizes
 barcode | yes | One barcode or array of barcodes associated with sizes
 ecom_url | yes/no | Required in case of integration for omni channel orders
 images | yes/no | Required if additional images feed/folder is not provided
-old_price | no | Price before discounts
 short_description | no | Can be used as a subtitle
 description | no |
 model | no | Model code, usually a part of SKU
