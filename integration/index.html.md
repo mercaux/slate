@@ -166,7 +166,6 @@ name | yes | Main product title
 color | yes | One color or array of colors, at least one required
 size | yes | One size or array of sizes
 barcode | yes | One barcode or array of barcodes associated with sizes
-price | yes | We support different prices for differens countries
 ecom_url | yes/no | Required in case of integration for omni channel orders
 images | yes/no | Required if additional images feed/folder is not provided
 old_price | no | Price before discounts
@@ -193,13 +192,11 @@ additional_attributes | no | For example tags or additional categories
 Image name/path should contain some kind of product id and flag identifying the primary image for each product.
 </aside>
 
-# Inventory
+# Inventory and prices
 
-###Integrating with inventory levels requires two types of data sets:
+###Integrating with inventory levels and prices requires two types of data sets:
 * Stores list
-* Inventory feed
-
-
+* Inventory and prices feed
 
 ##Stores list
 
@@ -248,7 +245,7 @@ longitude | no |
 store_cluster | no | Optional grouping by store type
 
 
-##Inventory feed
+##Inventory and prices feed
 
 > Example of the inventory feed:
 
@@ -257,10 +254,13 @@ store_cluster | no | Optional grouping by store type
 <inventory>
 	<store id="example_store_id">
 		<record productId="example_id_1">
-			7
+			<quantity>7</quantity>
+			<price>35</price>
+			<sale_price>30</sale_price>
 		</record>
 		<record productId="example_id_2">
-			3
+			<quantity>3</quantity>
+			<price>45</price>
 		</record>
 		...
 	</store>
@@ -275,12 +275,15 @@ store_cluster | no | Optional grouping by store type
 		"product_id" : "example_id_1",
 		"store_id" : "example_store_id",
 		"quantity" : 4,
-		"stock_quantity" : 2
+		"stock_quantity" : 2,
+		"price" : 35,
+		"sale_price" : 30
 	}, {
 		"product_id" : "example_id_2",
 		"store_id" : "example_store_id",
 		"quantity" : 3,
-		"stock_quantity" : 1
+		"stock_quantity" : 1,
+		"price" : 45
 	}, ...
 ] }
 
@@ -289,8 +292,8 @@ store_cluster | no | Optional grouping by store type
 ```plaintext
 
 store_id,product_id,quantity
-exmaple_store_id,example_product_id_1,6
-exmaple_store_id,example_product_id_2,5
+exmaple_store_id,example_product_id_1,6,35,30
+exmaple_store_id,example_product_id_2,5,45
 ...
 
 ```
@@ -301,3 +304,5 @@ store_id | yes |
 product_id | yes | Full SKU, ID or pair of product SKU and size ID
 quantity | yes |
 stock_quantity | no | Mercaux supports sales floor / stock inventory separation
+price | yes | We support different prices for differens countries
+sale_price | no | We store only fixed sale price, we do not support other promotions 
