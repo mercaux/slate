@@ -97,7 +97,6 @@ ecom_url | no |
         <categoryId>547</categoryId>
         <picture>http://example-store.com/path/to/image/1.jpg</picture>
         <picture>http://example-store.com/path/to/image/2.jpg</picture>
-        <vendor>Vendor name</vendor>
         <model>model_code</model>
         <param name="Color">Blue</param>
         <param name="Size">L</param>
@@ -176,7 +175,6 @@ brand | no |
 season | no |
 collection | no |
 wave | no |
-supplier | no |
 fabric | no |
 additional_attributes | no | For example tags or additional categories
 
