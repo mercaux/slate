@@ -60,7 +60,7 @@ That means you need to make another request with same URL, providing this header
 # Throttling
 
 Mercaux API will reject your request if you access API too often. You will get `429 (Too Many Requests)` result code.
-Default throttling value is 3 requests per minute for one API key. There are two exceptions from this rule.
+Default throttling value is 4 requests per minute for one API key. There are two exceptions from this rule.
 
 ### Request throttling and paging
 
@@ -68,7 +68,7 @@ All consequent paging requests are treated as one request and so not throttled.
 
 ### Request throttling and images
 
-After you request some looks, all corresponding images become available for download (only once) without throttling.
+After you request some (for example) looks, all corresponding images become available for download (only once) without throttling.
 
 # API Key Requests
 
@@ -436,6 +436,295 @@ Recommendation criterion is one of the  following types:
 
 * manual
 * Look <LookName> (one criterion for each look)
+
+## Get Products
+
+```shell
+curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "baseSku" : "sku123",
+      "sku" : "sku1",
+      "additionalSku" : ["sku2", "sku3"],
+      "barcode" : "123456789",
+      "additionalBarcode" : ["123","456","789"],
+      "model" : "model1",
+      "title" : "Shirt",
+      "size" : {
+         "id" : "2",
+         "type" : "general",
+         "grid" : "US",
+         "name" : "XL",
+         "sizeInt" : "12"
+      },
+      "colour" : {
+         "id" : "1",
+         "group" : "red",
+         "name" : "soft red"
+      },
+      "fabric" : {
+         "part" : {
+            "id" : "3",
+            "name" : "body"
+         },
+         "material" : {
+            "id" : "4",
+            "name" : "cotton"
+         }
+         "percent" : "100%"
+      },
+      "wave" : {
+         "id" : "5",
+         "name" : "Winter2019"
+      },
+      "brand" : {
+         "id" : "6",
+         "name" : "Nike"
+      },
+      "category" : [
+         {
+            "id" : "7",
+            "name" : "Boys > Shoes > Awesome shoes"
+         }
+      ],
+      "interview" : [
+         {
+            "id" : "8",
+            "name" : "Gender > Neutral"
+         }
+      ],
+      "collection" : {
+         "id" : "9",
+         "name" : "Classics"
+      },
+      "description" : "Some very long description.",
+      "shortDescription" : "Short description that is really shorter then description.",
+      "season" : {
+         "id" : "10",
+         "name" : "Winter"
+      },
+      "supplier" : {
+         "id" : "11",
+         "name" : "Shady supplier"
+      },
+      "primaryImage" : "image2.jpg",
+      "secondaryImage" : ["image.jpg", "image3.jpg"],
+      "colourPreviewImage" : ["image4.jpg"]
+      "price" : [
+         {
+            "id" : "12",
+            "priceType" : "base",
+            "storeCluster" : "Underground",
+            "salePrice" : 1.0
+            "retailPrice" : 2.0
+         }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves products for specific params.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/product/?<various params>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+language | Language to use for entities which have translations (example: en) (required)
+baseSkus | Filter products by base skus (multiple allowed, optional)
+skus | Filter products by skus (multiple allowed, optional)
+brands | Filter products by brand names (multiple allowed, optional)
+supplier | Filter products by supplier name (optional)
+catalogCategoryIds | Filter products by ids of their categories (multiple allowed, optional)
+catalogCategories | Filter products by category names (multiple allowed, optional)
+interviewCategoryIds | Filter products by ids of their interview categories (multiple allowed, optional)
+interviewCategories | Filter products by interview category names (multiple allowed, optional)
+seasons | Filter products by season names (multiple allowed, optional)
+collections | Filter products by collection names (multiple allowed, optional)
+wave | Filter products by wave name (optional)
+fabrics | Filter products by fabric names (multiple allowed, optional)
+colours | Filter products by colour names (multiple allowed, optional)
+sizes | Filter products by size names (multiple allowed, optional)
+badges | Filter products by badge names (multiple allowed, optional)
+query | Text query to filter products (optional)
+withImages | If true, get only products which have at least one image, if false, get only products without any image (optional)
+withInventory | If true, get only products which are present in stores, if false, get only products which are not present in stores (optional)
+pushed | Get only pushed (if true) or not pushed (if false) products (optional)
+onlyWithoutLooks | Get only products without any look (if true) or all products otherwise (if false or not present) (optional)
+onlyWithoutBadges | Get only products without any badges (if true) or all products otherwise (if false or not present) (optional)
+onlyWithoutAlts | Get only products without any alternatives (if true) or all products otherwise (if false or not present) (optional)
+onlyWithoutRecs | Get only products without any recommendations (if true) or all products otherwise (if false or not present) (optional)
+currency | Used together with price filters, specifies currency so only prices with that currency is used for filtering (optional)
+minRetailPrice | Keep products with retail price greater or equal to this value (optional)
+maxRetailPrice | Keep products with retail price less or equal to this value (optional)
+minSalePrice | Keep products with sale price greater or equal to this value (optional)
+maxSalePrice | Keep products with sale price less or equal to this value (optional)
+saleOnly | Keep only products which are on sale (optional)
+productStatus | Filter products by product status (multiple allowed, optional)
+country | Used together with both status filter and all content-based filters to specify where to check status and/or content availability; use country code here (optional)
+productPriceType | Used together with price filters, specifies currency so only prices with that currency is used for filtering (optional)
+
+### Images
+
+Every product may contain various images (primary and several secondary ones).
+To get these images you should use this API, e.g. if provided image path is `/1.0/api/product/image/pic33.jpg` 
+you should access it with `https://api.mercaux.com/1.0/api/product/image/pic33.jpg` URL. 
+See below for these Image request details.
+
+### Text constants
+
+Some json fields have predefined values. Here's the list:
+
+* Status: onSale, preSale, postSale, notAvailable
+
+## Get product image
+
+```shell
+curl "https://api.mercaux.com/1.0/api/product/image/<imageName>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns `303 See Other` result code and redirect location to Amazon CDN. 
+> The redirect link is valid at least 30 seconds after it was generated.
+
+This endpoint retrieves an layout image with given name.
+It always return `303 See Other` result code and redirect location to Amazon CDN in `Location` header.
+All popular network libraries are able to automatically follow this redirect and get the image (if exists).
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/product/image/<imageName>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+imageName | image name
+
+### Redirect URL
+
+This request will always provide you with URL redirect to. That's a signed Amazon CDN URL, which is valid for a short amount of time.
+Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
+even if link is already expired. To re-download the image later, use this API url to generate new redirect.
+
+## Get Analytics event names
+
+```shell
+curl "https://api.mercaux.com/1.0/api/analytics/raw/eventName?language=<language code>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "id" : "100",
+      "eventName" : "Scan barcode",
+      "translatedEventName" : "Scan barcode",
+      "subEvents" : [
+         {
+            "name" : "none",
+            "translatedName" : "none"
+         }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves event names for analytics translated to specific language.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/analytics/raw/eventName?language=<language code>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+language | Language to use for entities which have translations (example: en) (required)
+
+## Get raw analytics
+
+```shell
+curl "https://api.mercaux.com/1.0/api/analytics/raw/?<different params, see below>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "timestamp" : "2019-10-20.10:20:30",
+      "date" : "2019-10-20",
+      "time" : "10:20:30",
+      "store" : "Main Plaza",
+      "storeUniqueId" : "MP124",
+      "event" : "Scan barcode",
+      "eventId" : "100",
+      "productSku" : "sku123",
+      "fullCatalogPath" : [
+         "Boys > Shoes > Awesome shoes"
+      ],
+      "firstLevelCategory" : ["Boys"],
+      "secondLevelCategory" : ["Shoes"],
+      "variantSku" : "sku1",
+      "variantUniqueId" : "1234124124",
+      "sizes" : "L, XL",
+      "colours" : "Red, Blue",
+      "user" : "Admin",
+      "userLogin" : "support@mercaux.com",
+      "role" : "Mercaux",
+      "country" : "Uganda",
+      "duplicateUniqueId" : ["21341234123", "4234123412341"],
+      "duplicateSku" : ["sku2", "sku3"]
+    }
+  ]
+}
+```
+
+This endpoint retrieves raw analytics for specific params.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/analytics/raw/?<various params>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+language | Language to use for entities which have translations (example: en) (required)
+defaultLanguage | Fallback language to use for entities which have translations but there's no translation for the previously specified language (example: en) (required)
+start | The start of the time interval (ex: 2019-10-20.10:20:30, required)
+end | The end of the time interval (ex: 2019-10-20.10:20:30, required)
+eventIds | Filter events by ids (multiple allowed, optional)
+eventSubtypes | Filter events by subtypes (multiple allowed, optional)
+storeUniqueIds | Filter by store unique ids (multiple allowed, optional)
+versions | Filter by app versions (multiple allowed, optional)
+appTypes | Filter by app types (multiple allowed, optional)
+userRoles | Filter by user role names (multiple allowed, optional)
+hoursShift | Alter timestamps in response (to correspond not to UTC time, optional)
+
+### Text constants
+
+Some json fields have predefined values. Here's the list:
+
+* appType: ios, iphone, ipad, portal, android, androidTablet, androidPhone, androidBigScreen, mobile
 
 # Miscellaneous requests
 
