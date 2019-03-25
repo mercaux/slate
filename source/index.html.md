@@ -522,7 +522,7 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
             "id" : "12",
             "priceType" : "base",
             "storeCluster" : "Underground",
-            "salePrice" : 1.0
+            "salePrice" : 1.0,
             "retailPrice" : 2.0
          }
       ]
