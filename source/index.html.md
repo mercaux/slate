@@ -477,7 +477,7 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
          "material" : {
             "id" : "4",
             "name" : "cotton"
-         }
+         },
          "percent" : "100%"
       },
       "wave" : {
