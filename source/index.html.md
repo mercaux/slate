@@ -516,7 +516,7 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
       },
       "primaryImage" : "image2.jpg",
       "secondaryImage" : ["image.jpg", "image3.jpg"],
-      "colourPreviewImage" : ["image4.jpg"]
+      "colourPreviewImage" : ["image4.jpg"],
       "price" : [
          {
             "id" : "12",
@@ -572,7 +572,7 @@ minSalePrice | Keep products with sale price greater or equal to this value (opt
 maxSalePrice | Keep products with sale price less or equal to this value (optional)
 saleOnly | Keep only products which are on sale (optional)
 productStatus | Filter products by product status (multiple allowed, optional)
-country | Used together with both status filter and all content-based filters to specify where to check status and/or content availability; use country code here (optional)
+country | Used together with both status filter and all content-based filters to specify where to check status and/or content availability; use country code here; also filters skus, uniqueIds, badges by this country (optional)
 productPriceType | Used together with price filters, specifies currency so only prices with that currency is used for filtering (optional)
 
 ### Images
