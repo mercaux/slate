@@ -488,6 +488,13 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
          "id" : "6",
          "name" : "Nike"
       },
+      "badge" : {
+         "id" : "42",
+         "name" : "SuperBadge",
+         "storeCluster" : "UK",
+         "store" : "London Airport",
+         "storeUniqueId" : "GB_LA_12"
+      },
       "category" : [
          {
             "id" : "7",
@@ -617,6 +624,45 @@ imageName | image name
 This request will always provide you with URL redirect to. That's a signed Amazon CDN URL, which is valid for a short amount of time.
 Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
 even if link is already expired. To re-download the image later, use this API url to generate new redirect.
+
+## Get Products
+
+```shell
+curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "sku" : "sku1",
+      "additionalSku" : ["sku2", "sku3"],
+      "barcode" : "123456789",
+      "additionalBarcode" : ["123","456","789"],
+      "store" : "London Airport",
+      "storeUniqueId" : "GB_LA_12",
+      "quantity" : 12,
+      "stockQuantity" : 5
+    }
+  ]
+}
+```
+
+This endpoint retrieves inventory for specific params.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/inventory/?<various params>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+language | Language to use for entities which have translations (example: en) (required)
+country | Used to filter stores for inventory and sku's and uniqueId's 
 
 ## Get Analytics event names
 
