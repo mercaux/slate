@@ -625,10 +625,10 @@ This request will always provide you with URL redirect to. That's a signed Amazo
 Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
 even if link is already expired. To re-download the image later, use this API url to generate new redirect.
 
-## Get Products
+## Get Inventory
 
 ```shell
-curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
+curl "https://api.mercaux.com/1.0/api/inventory/?<different params, see below>"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
 ```
 
