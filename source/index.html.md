@@ -57,6 +57,29 @@ Mercaux API has paging enabled. You may get 206 (Partial Content) code back with
 
 That means you need to make another request with same URL, providing this header back as is to get next data portion.
 
+# Difs
+
+> Some requests support difs (they can return only changes which happen after specific time). To use this functionality you should add a header and use the returned one from the previous update. Time is in UTC. Format is "2019-10-20.10:20:30". To get all the data (for the first time), just use normal request as described in documentation.
+
+```shell
+curl "api_endpoint_here"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+
+> To get dif, add `X-MercauxAPITimestamp` header. Copy it intact from previous response. 
+
+```shell
+curl "api_endpoint_here"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+  -H "X-MercauxAPITimestamp: yyyy-mm-dd.hh:mm:ss"
+```
+
+> Make sure to replace `XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX` with your API key.
+
+> Make sure to replace `X-MercauxAPITimestamp` with data from previous response.
+
+> Make sure to use the same timestamp for all the paging requests (while you get 206 response).
+
 # Throttling
 
 Mercaux API will reject your request if you access API too often. You will get `429 (Too Many Requests)` result code.
@@ -595,6 +618,134 @@ Some json fields have predefined values. Here's the list:
 
 * Status: onSale, preSale, postSale, notAvailable
 
+## Get All Products (with dif functionality)
+
+```shell
+curl "https://api.mercaux.com/1.0/api/product/dif/?<different params, see below>"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+  -H "X-MercauxAPITimestamp: 2019-11-20.10:00:00"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "baseSku" : "sku123",
+      "sku" : "sku1",
+      "additionalSku" : ["sku2", "sku3"],
+      "barcode" : "123456789",
+      "additionalBarcode" : ["123","456","789"],
+      "model" : "model1",
+      "title" : "Shirt",
+      "size" : {
+         "id" : "2",
+         "type" : "general",
+         "grid" : "US",
+         "name" : "XL",
+         "sizeInt" : "12"
+      },
+      "colour" : {
+         "id" : "1",
+         "group" : "red",
+         "name" : "soft red"
+      },
+      "fabric" : {
+         "part" : {
+            "id" : "3",
+            "name" : "body"
+         },
+         "material" : {
+            "id" : "4",
+            "name" : "cotton"
+         },
+         "percent" : "100%"
+      },
+      "wave" : {
+         "id" : "5",
+         "name" : "Winter2019"
+      },
+      "brand" : {
+         "id" : "6",
+         "name" : "Nike"
+      },
+      "badge" : {
+         "id" : "42",
+         "name" : "SuperBadge",
+         "storeCluster" : "UK",
+         "store" : "London Airport",
+         "storeUniqueId" : "GB_LA_12"
+      },
+      "category" : [
+         {
+            "id" : "7",
+            "name" : "Boys > Shoes > Awesome shoes"
+         }
+      ],
+      "interview" : [
+         {
+            "id" : "8",
+            "name" : "Gender > Neutral"
+         }
+      ],
+      "collection" : {
+         "id" : "9",
+         "name" : "Classics"
+      },
+      "description" : "Some very long description.",
+      "shortDescription" : "Short description that is really shorter then description.",
+      "season" : {
+         "id" : "10",
+         "name" : "Winter"
+      },
+      "supplier" : {
+         "id" : "11",
+         "name" : "Shady supplier"
+      },
+      "primaryImage" : "image2.jpg",
+      "secondaryImage" : ["image.jpg", "image3.jpg"],
+      "colourPreviewImage" : ["image4.jpg"],
+      "price" : [
+         {
+            "id" : "12",
+            "priceType" : "base",
+            "storeCluster" : "Underground",
+            "salePrice" : 1.0,
+            "retailPrice" : 2.0
+         }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves products for specific params.
+
+### HTTP Request
+
+`GET https://api.mercaux.com/1.0/api/product/dif/?<various params>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+language | Language to use for entities which have translations (example: en) (required)
+country | Used together with both status filter and all content-based filters to specify where to check status and/or content availability; use country code here; also filters skus, uniqueIds, badges by this country (optional)
+
+### Images
+
+Every product may contain various images (primary and several secondary ones).
+To get these images you should use this API, e.g. if provided image path is `/1.0/api/product/image/pic33.jpg` 
+you should access it with `https://api.mercaux.com/1.0/api/product/image/pic33.jpg` URL. 
+See below for these Image request details.
+
+### Text constants
+
+Some json fields have predefined values. Here's the list:
+
+* Status: onSale, preSale, postSale, notAvailable
+
 ## Get product image
 
 ```shell
@@ -625,11 +776,12 @@ This request will always provide you with URL redirect to. That's a signed Amazo
 Normally it will be valid for 30-60 seconds. You should start your image download before it is expired, however you may continue your download 
 even if link is already expired. To re-download the image later, use this API url to generate new redirect.
 
-## Get Inventory
+## Get Inventory (with dif functionality)
 
 ```shell
 curl "https://api.mercaux.com/1.0/api/inventory/?<different params, see below>"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+  -H "X-MercauxAPITimestamp: 2019-11-20.10:00:00"
 ```
 
 > The above command returns JSON structured like this:
@@ -662,7 +814,7 @@ This endpoint retrieves inventory for specific params.
 Parameter | Description
 --------- | -----------
 language | Language to use for entities which have translations (example: en) (required)
-country | Used to filter stores for inventory and sku's and uniqueId's 
+country | Used to filter stores for inventory and sku's and uniqueId's
 
 ## Get Analytics event names
 
