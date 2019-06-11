@@ -59,7 +59,7 @@ That means you need to make another request with same URL, providing this header
 
 # Difs
 
-> Some requests support difs (they can return only changes which happen after specific time). To use this functionality you should add a header and use the returned one from the previous update. Time is in UTC. Format is "2019-10-20.10:20:30". To get all the data (for the first time), just use normal request as described in documentation.
+> To get all the data (for the first time), just use normal request as described in documentation.
 
 ```shell
 curl "api_endpoint_here"
@@ -79,6 +79,8 @@ curl "api_endpoint_here"
 > Make sure to replace `X-MercauxAPITimestamp` with data from previous response.
 
 > Make sure to use the same timestamp for all the paging requests (while you get 206 response).
+
+Some requests support difs (they are able return changes which happened after specific time). To use this functionality you should add a header and use the returned one from the previous update. Time is in UTC. Format is "2019-10-20.10:20:30".
 
 # Throttling
 
