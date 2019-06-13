@@ -478,7 +478,7 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
       "baseSku" : "sku123",
       "sku" : "sku1",
       "additionalSku" : ["sku2", "sku3"],
-      "additionalSkuByCluster: : [
+      "additionalSkuByCluster" : [
          {
             "id":"sku2",
             "name":"sku",
@@ -674,7 +674,7 @@ curl "https://api.mercaux.com/1.0/api/product/dif/?<different params, see below>
       "baseSku" : "sku123",
       "sku" : "sku1",
       "additionalSku" : ["sku2", "sku3"],
-      "additionalSkuByCluster: : [
+      "additionalSkuByCluster" : [
          {
             "id":"sku2",
             "name":"sku",
