@@ -478,8 +478,37 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
       "baseSku" : "sku123",
       "sku" : "sku1",
       "additionalSku" : ["sku2", "sku3"],
+      "additionalSkuByCluster: : [
+         {
+            "id":"sku2",
+            "name":"sku",
+            "storeCluster":"SpainCluster"
+         },
+         {
+            "id":"sku3",
+            "name":"sku",
+            "storeCluster":"RussianCluster"
+         }
+      ],
       "barcode" : "123456789",
       "additionalBarcode" : ["123","456","789"],
+      "additionalBarcodeByCluster" : [
+         {
+            "id":"123",
+            "name":"barcode",
+            "storeCluster":"SpainCluster"
+         },
+         {
+            "id":"456",
+            "name":"barcode",
+            "storeCluster":"ArgentinaCluster"
+         },
+         {
+            "id":"789",
+            "name":"barcode",
+            "storeCluster":"USACluster"
+         }
+      ],
       "model" : "model1",
       "title" : "Shirt",
       "size" : {
@@ -557,7 +586,15 @@ curl "https://api.mercaux.com/1.0/api/product/?<different params, see below>"
             "salePrice" : 1.0,
             "retailPrice" : 2.0
          }
-      ]
+      ],
+      "status" : [
+         {
+            "id":"onSale",
+            "name":"status",
+            "storeCluster":"SpainCluster"
+         }
+      ],
+      "deleted":false
     }
   ]
 }
@@ -637,8 +674,37 @@ curl "https://api.mercaux.com/1.0/api/product/dif/?<different params, see below>
       "baseSku" : "sku123",
       "sku" : "sku1",
       "additionalSku" : ["sku2", "sku3"],
+      "additionalSkuByCluster: : [
+         {
+            "id":"sku2",
+            "name":"sku",
+            "storeCluster":"SpainCluster"
+         },
+         {
+            "id":"sku3",
+            "name":"sku",
+            "storeCluster":"RussianCluster"
+         }
+      ],
       "barcode" : "123456789",
       "additionalBarcode" : ["123","456","789"],
+      "additionalBarcodeByCluster" : [
+         {
+            "id":"123",
+            "name":"barcode",
+            "storeCluster":"SpainCluster"
+         },
+         {
+            "id":"456",
+            "name":"barcode",
+            "storeCluster":"ArgentinaCluster"
+         },
+         {
+            "id":"789",
+            "name":"barcode",
+            "storeCluster":"USACluster"
+         }
+      ],
       "model" : "model1",
       "title" : "Shirt",
       "size" : {
@@ -716,7 +782,15 @@ curl "https://api.mercaux.com/1.0/api/product/dif/?<different params, see below>
             "salePrice" : 1.0,
             "retailPrice" : 2.0
          }
-      ]
+      ],
+      "status" : [
+         {
+            "id":"onSale",
+            "name":"status",
+            "storeCluster":"SpainCluster"
+         }
+      ],
+      "deleted":false
     }
   ]
 }
