@@ -173,7 +173,7 @@ curl "https://api.mercaux.com/1.0/api/look/?query=some_text_query"
       ],
       "createdOn" : "2016-06-07.07:54:58",
       "updatedOn" : "2016-06-07.07:54:58",
-      "status" : "active",
+      "status" : "activeObject",
       "digital" : false,
       "lookType" : "signature",
       "previewImageName" : "/1.0/api/look/preview/pic.jpg",
@@ -214,7 +214,7 @@ curl "https://api.mercaux.com/1.0/api/look/?query=some_text_query"
       ],
       "createdOn" : "2016-06-07.07:54:58",
       "updatedOn" : "2016-06-07.07:54:58",
-      "status" : "awaiting_approval",
+      "status" : "awaitingApproval",
       "digital" : true,
       "lookType" : "ordinary",
       "previewImageName" : "/1.0/api/look/preview/pic4.jpg",
@@ -256,7 +256,7 @@ See below for these Image request details.
 
 Some json fields have predefined values. Here's the list:
 
-* Status: active, awaiting_approval, rejected
+* Status: activeObject, awaitingApprovalLook, rejectedLook
 * Look type : ordinary, signature, operational, social, customer
 
 ## Get look layout image
