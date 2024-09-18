@@ -1004,6 +1004,50 @@ Some json fields have predefined values. Here's the list:
 
 * appType: ios, iphone, ipad, portal, android, androidTablet, androidPhone, androidBigScreen, mobile
 
+
+## Post task event
+
+```shell
+curl "https://api.mercaux.com/1.0/api/task"
+  -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+```
+or
+```shell
+curl "https://api.mercaux.com/1.0/api/task"
+  -H "Authorization: Basic <base64 encoded tech_user_name:XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX>"
+```
+
+This endpoint allows to add tasks to the Task Management module. 
+
+### HTTP Request
+
+`POST https://api.mercaux.com/1.0/api/task`
+
+ ```json
+{
+  "timestamp": "2024-08-02T13:55:52.012Z",
+  "email": "email@example.com",
+  "phone_number": "+447422342777",
+  "preferred_store_id": "8737",
+  "preferred_sa_id": "32774",
+  "task_name": "birthday",
+  "birthdate": "1988-08-02"
+}
+```
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+timestamp | Event timestamp in ISO format (optional)
+email | Customer email
+phone_number | Customer phone number (optional)
+preferred_store_id| Store to which the created task will be assigned (optional)
+preferred_sa_id| Sales assistant to which the created task will be assigned (optional)
+task_name| Name defining task type that will be created.
+birthdate| Customer birth date in ISO format, required if task_name is "birthday".
+
+
 # Miscellaneous requests
 
 ## Get current time
