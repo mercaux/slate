@@ -1010,9 +1010,9 @@ Some json fields have predefined values. Here's the list:
 ```shell
 curl "https://api.mercaux.com/1.0/api/task"
   -H "X-MercauxApikey: XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
-```
-or
-```shell
+
+#or
+
 curl "https://api.mercaux.com/1.0/api/task"
   -H "Authorization: Basic <base64 encoded tech_user_name:XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX>"
 ```
