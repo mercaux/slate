@@ -1026,12 +1026,13 @@ This endpoint allows to add tasks to the Task Management module.
  ```json
 {
   "timestamp": "2024-08-02T13:55:52.012Z",
-  "email": "email@example.com",
-  "phone_number": "+447422342777",
-  "preferred_store_id": "8737",
-  "preferred_sa_id": "32774",
-  "task_name": "birthday",
-  "birthdate": "1988-08-02"
+  "rule_code": "generic-rule",
+  "template_code": "generic-template",
+  "customer_id": ["user_1", "user_2"],
+  "email": ["email@example.com"],
+  "phone_number": ["+447422222777"],
+  "store_id": "8737",
+  "user_id": "32774"
 }
 ```
 
@@ -1040,13 +1041,18 @@ This endpoint allows to add tasks to the Task Management module.
 Parameter | Description
 --------- | -----------
 timestamp | Event timestamp in ISO format (optional)
-email | Customer email
-phone_number | Customer phone number (optional)
-preferred_store_id| Store to which the created task will be assigned (optional)
-preferred_sa_id| Sales assistant to which the created task will be assigned (optional)
-task_name| Name defining task type that will be created.
-birthdate| Customer birth date in ISO format, required if task_name is "birthday".
-
+deduplication_id | Unique request id to prevent duplication if called multiple times (optional)
+rule_code | Task automation rule defining how to process the request
+template_code | Identifier specifying templates of which type should be applied to the request (optional)
+template_unique_code | Identifier distinguishing a specific template when multiple templates with the same type/code are used in the same rule (optional) 
+customer_id | List of customer ids defining customers to attach to the created tasks (optional)
+email | List if emails defining customers to attach to the created tasks (optional)
+phone_number | List of phone numbers defining customers to attach to the created tasks (optional)
+sku | List of product skus to attach to the created task (optional)
+look_id | List of Mercaux look ids to attach to the created task (optional)
+order_id | Order identifier in client OMS to attach to the created task (optional)
+store_id| Store to assign the created task to (optional)
+user_id| User to assign the created task to (optional)
 
 # Miscellaneous requests
 
