@@ -1038,21 +1038,24 @@ This endpoint allows to add tasks to the Task Management module.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-timestamp | Event timestamp in ISO format (optional)
-deduplication_id | Unique request id to prevent duplication if called multiple times (optional)
-rule_code | Task automation rule defining how to process the request
-template_code | Identifier specifying templates of which type should be applied to the request (optional)
-template_unique_code | Identifier distinguishing a specific template when multiple templates with the same type/code are used in the same rule (optional) 
-customer_id | List of customer ids defining customers to attach to the created tasks (optional)
-email | List if emails defining customers to attach to the created tasks (optional)
-phone_number | List of phone numbers defining customers to attach to the created tasks (optional)
-sku | List of product skus to attach to the created task (optional)
-look_id | List of Mercaux look ids to attach to the created task (optional)
-order_id | Order identifier in client OMS to attach to the created task (optional)
-store_id| Store to assign the created task to (optional)
-user_id| User to assign the created task to (optional)
+Parameter            | Description                                                                                                                        
+----------------------|------------------------------------------------------------------------------------------------------------------------------------
+ timestamp            | Event timestamp in ISO format (optional)                                                                                           
+ deduplication_id     | Unique request id to prevent duplication if called multiple times (optional)                                                       
+ rule_code            | Task automation rule defining how to process the request                                                                           
+ template_code        | Identifier specifying templates of which type should be applied to the request (optional)                                          
+ template_unique_code | Identifier distinguishing a specific template when multiple templates with the same type/code are used in the same rule (optional) 
+ customer_id          | List of customer ids defining customers to attach to the created tasks (optional)                                                  
+ email                | List of emails defining customers to attach to the created tasks (optional)                                                        
+ phone_number         | List of phone numbers defining customers to attach to the created tasks (optional)
+ customer_id_str      | String with comma separated customer ids defining customers to attach to the created tasks. Used if all the above customer identifiers are empty. (optional)
+ email_str            | String with comma separated emails defining customers to attach to the created tasks. Used if all the above customer identifiers are empty. (optional)
+ phone_number_str     | String with comma separated phone numbers defining customers to attach to the created tasks. Used if all the above customer identifiers are empty. (optional)
+ sku                  | List of product skus to attach to the created task (optional)                                                                      
+ look_id              | List of Mercaux look ids to attach to the created task (optional)                                                                  
+ order_id             | Order identifier in client OMS to attach to the created task (optional)                                                            
+ store_id             | Store to assign the created task to (optional)                                                                                     
+ user_id              | User to assign the created task to (optional)
 
 # Miscellaneous requests
 
