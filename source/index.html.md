@@ -1018,6 +1018,8 @@ curl "https://api.mercaux.com/1.0/api/task"
 ```
 
 This endpoint allows to add tasks to the Task Management module. 
+Customers are taken from `customer_id`, `email` and `phone_number` fields first and only if all of them are empty,
+from `customer_id_str`, `email_str` and `phone_number_str`.
 
 ### HTTP Request
 
