@@ -85,7 +85,7 @@ Some requests support difs (they are able return changes which happened after sp
 # Throttling
 
 Mercaux API will reject your request if you access API too often. You will get `429 (Too Many Requests)` result code.
-Default throttling value is 4 requests per minute for one API key. There are two exceptions from this rule.
+Default throttling value is 60 requests per minute for one API key. There are two exceptions from this rule.
 
 ### Request throttling and paging
 
